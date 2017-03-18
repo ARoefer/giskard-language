@@ -1,0 +1,12 @@
+# Aligns the gripper's and goal's frames
+import "pr2.giskard"
+import "basicGoals.giskard"
+
+def controller_cart_goal: {
+	robot = robot_pr2(!EXPOSE);
+	goal = inputFrame("goal");
+
+	out = QP(robot.controllableConstraints,
+			 frameAlignment(robot.ee_r, goal, 1),
+			 robot.hardConstraints);
+};

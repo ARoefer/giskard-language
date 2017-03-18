@@ -1,0 +1,31 @@
+import "math.giskard"
+
+def axisAlignment: {
+	axisA = inputVec3("a");
+	axisB = inputVec3("b");
+	dot = axisA * axisB;
+	err = 1 - dot;
+	out = softConstraint(err, err, input("weight"), dot, "Axis alignment");
+};
+
+def rotationAlignment: {
+	rotA = inputRot("a");
+	rotB = inputRot("b");
+	weight = input("weight");
+	out = [axisAlignment(a * unitX, b * unitX, weight), axisAlignment(a * unitZ, b * unitZ, weight)];
+};
+
+def positionAlignment: {
+	posA = inputVec3("a");
+	posB = inputVec3("b");
+	dist = norm(posA, posB);
+	err = -dist;
+	out = softConstraint(err, err, input("weight"), dist, "Position alignment");
+};
+
+def frameAlignment: {
+	frameA = inputFrame("a");
+	frameB = inputFrame("b");
+	weight = inputFrame("weight");
+	out = rotationAlignment(frameA.rot, frameB.rot, weight) + positionAlignment(frameA.pos, frameB.pos, weight);
+};

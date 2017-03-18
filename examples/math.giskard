@@ -1,0 +1,3 @@
+def unitX: vec3(1,0,0);
+def unitY: vec3(0,1,0);
+def unitZ: vec3(0,0,1);
