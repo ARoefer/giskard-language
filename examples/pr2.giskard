@@ -80,7 +80,7 @@ def robot_pr2: {
 	controllableConstraint(negVelLimitArm, posVelLimitArm, weightArm, j_elbow_flex_r, "j_elbow_flex_r"),
 	controllableConstraint(negVelLimitArm, posVelLimitArm, weightArm, j_forearm_roll_r, "j_forearm_roll_r"),
 	controllableConstraint(negVelLimitArm, posVelLimitArm, weightArm, j_wrist_flex_r, "j_wrist_flex_r"),
-	controllableConstraint(negVelLimitArm, posVelLimitArm, weightArm, j_wrist_roll_r, "j_wrist_roll_r")]		
+	controllableConstraint(negVelLimitArm, posVelLimitArm, weightArm, j_wrist_roll_r, "j_wrist_roll_r")];		
 
 	out.hardConstraints = [
 	hardConstraint(0.0115 - j_torso_lift, 0.325 - j_torso_lift, j_torso_lift),
@@ -96,5 +96,5 @@ def robot_pr2: {
 	hardConstraint(-0.3536 - j_shoulder_lift_r, 1.2963 - j_shoulder_lift_r,  j_shoulder_lift_r),
 	hardConstraint(-3.75   - j_upper_arm_roll_r,  0.65 - j_upper_arm_roll_r, j_upper_arm_roll_r),
 	hardConstraint(-2.1213 - j_elbow_flex_r,     -0.15 - j_elbow_flex_r,     j_elbow_flex_r),
-	hardConstraint(-2.0    - j_wrist_flex_r,      -0.1 - j_wrist_flex_r,     j_wrist_flex_r)]
+	hardConstraint(-2.0    - j_wrist_flex_r,      -0.1 - j_wrist_flex_r,     j_wrist_flex_r)];
 };
